@@ -1,0 +1,69 @@
+<!DOCTYPE zouraiz>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>GPS Map Camera Web App</title>
+    <link rel="stylesheet" href="style.css">
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/leaflet@1.7.1/dist/leaflet.css" />
+</head>
+<body>
+    <div class="container">
+        <!-- Loading indicator -->
+        <div class="loading" id="loadingIndicator">Loading camera and location...</div>
+        
+        <!-- Camera container -->
+        <div id="cameraContainer">
+            <video id="camera-stream" autoplay playsinline></video>
+            <canvas id="snapshot-canvas"></canvas>
+            
+            <!-- Location info card (like in screenshot) -->
+            <div class="location-info-card">
+                <div class="info-container">
+                    <div class="location-map" id="mini-map-container">
+                        <div id="mini-map"></div>
+                    </div>
+                    <div class="location-details">
+                        <div class="location-title" id="location-title">Loading location...</div>
+                        <div class="location-address" id="location-address"></div>
+                        <div class="location-meta">
+                            <div class="datetime" id="datetime"></div>
+                            <div class="weather">
+                                <span class="weather-icon" id="weather-icon">☀️</span>
+                                <span id="temperature"></span>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            
+            <!-- Accuracy indicator -->
+            <div class="accuracy-indicator" id="accuracyIndicator">Accuracy: Waiting...</div>
+            
+            <!-- Camera controls -->
+            <div class="camera-controls">
+                <div class="control-btn" id="switchCameraBtn">
+                    <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="white" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M21 12c0 1.2-.504 2.286-1.307 3.06a4.79 4.79 0 01-3.447 1.44c-2.724 0-4.931-2.238-4.931-5s2.207-5 4.931-5c1.274 0 2.466.497 3.346 1.337"></path><path d="M21 9V3m0 6L15 5"></path><path d="M3 12c0 1.2.504 2.286 1.307 3.06A4.79 4.79 0 007.754 16.5c2.724 0 4.931-2.238 4.931-5s-2.207-5-4.931-5c-1.274 0-2.466.497-3.346 1.337"></path><path d="M3 15v6m0-6l6 4"></path></svg>
+                </div>
+                <div class="capture-btn" id="captureBtn"></div>
+                <div class="control-btn" id="viewMapBtn">
+                    <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="white" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M12 2C8.13 2 5 5.13 5 9c0 5.25 7 13 7 13s7-7.75 7-13c0-3.87-3.13-7-7-7zm0 9.5c-1.38 0-2.5-1.12-2.5-2.5s1.12-2.5 2.5-2.5 2.5 1.12 2.5 2.5-1.12 2.5-2.5 2.5z"></path></svg>
+                </div>
+            </div>
+            
+            <!-- Action buttons after taking photo -->
+            <div class="action-buttons" id="actionButtons">
+                <button id="downloadBtn">Save Photo</button>
+                <button id="retakeBtn">Retake</button>
+            </div>
+        </div>
+        
+        <!-- Map container -->
+        <div id="mapContainer">
+            <div id="map"></div>
+        </div>
+    </div>
+<script src="main.js"></script>
+
+</body>
+</html>
